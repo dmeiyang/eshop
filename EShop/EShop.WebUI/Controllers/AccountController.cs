@@ -26,14 +26,20 @@ namespace EShop.WebUI.Controllers
         public async Task<ActionResult> Login(string account, string password)
         {
             // 1. 利用ASP.NET Identity获取用户对象
-            var user = await UserManager.FindByIdAsync("470a84c8d61f40d3bd9d157bcc143daf");
+            var user = await UserManager.FindAsync(account, password);
+
+            // 验证用户密码和登录密码是否一致
+            // UserManager.PasswordHasher.VerifyHashedPassword(user.PasswordHash, password);
 
             if (user == null)
                 return Json(new { Flag = false, Content = "用户名或密码错误！！！" });
 
             // 2. 利用ASP.NET Identity获取identity 对象
-            //var identity = await UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
 
+            // mvc自带创建identity方法
+            // var identity = await UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
+
+            // 自定义创建identity方法
             var claims = new List<System.Security.Claims.Claim>();
 
             claims.Add(new System.Security.Claims.Claim(System.Security.Claims.ClaimTypes.NameIdentifier, user.Id));
@@ -62,6 +68,19 @@ namespace EShop.WebUI.Controllers
         [HttpPost]
         public async Task<ActionResult> Register(Models.RegisterViewModel model)
         {
+            //var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };
+
+            //var result = await UserManager.CreateAsync(user, model.Password);
+
+            //if (result.Succeeded)
+            //{
+            //    return Json(new { Flag = true, Content = "注册成功！！！" }, JsonRequestBehavior.AllowGet);
+            //}
+            //else
+            //{
+            //    return Json(new { Flag = false, Content = "注册失败！！！" }, JsonRequestBehavior.AllowGet);
+            //}
+
             var db = new Data.DataContext();
 
             db.Members.Add(new Data.DomainModels.Member()
@@ -69,7 +88,7 @@ namespace EShop.WebUI.Controllers
                 Id = Guid.NewGuid().ToString("N"),
                 SecurityStamp = Guid.NewGuid().ToString(),
                 Email = model.Email,
-                PasswordHash = model.Password,
+                PasswordHash = UserManager.PasswordHasher.HashPassword(model.Password),
                 UserName = model.UserName
             });
 

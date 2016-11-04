@@ -846,7 +846,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\mgr\vendors\jquery-ui-1.10.3.custom\css\ui-lightness\" />
     <Folder Include="Content\mgr\vendors\ueditor\net\upload\image\20160118\" />
-    <Folder Include="Views\Basic\" />
     <Folder Include="Views\Home\" />
     <Folder Include="Views\User\" />
   </ItemGroup>
