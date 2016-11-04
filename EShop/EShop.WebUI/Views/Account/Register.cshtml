@@ -1,0 +1,102 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Register</title>
+    <link type="text/css" rel="stylesheet" href="/content/mgr/vendors/font-awesome/css/font-awesome.min.css">
+    <link type="text/css" rel="stylesheet" href="/content/mgr/vendors/bootstrap/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="/content/mgr/vendors/iCheck/skins/all.css">
+    <link type="text/css" rel="stylesheet" href="/content/mgr/css/themes/style1/pink-blue.css" class="default-style">
+</head>
+<body id="signup-page">
+    <div class="page-form">
+        <form id="amy-form" action="@Url.Action("Register", "Account")" method="post" class="form">
+            <div class="header-content">
+                <h1>用户注册</h1>
+            </div>
+            <div class="body-content">
+                <div class="form-group">
+                    <div class="input-icon right">
+                        <i class="fa fa-user"></i>
+                        <input type="text" placeholder="用户名称" name="username" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-icon right">
+                        <i class="fa fa-envelope"></i>
+                        <input type="email" placeholder="用户邮箱" name="email" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-icon right">
+                        <i class="fa fa-key"></i>
+                        <input id="password" type="password" placeholder="用户密码" name="password" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-icon right">
+                        <i class="fa fa-key"></i>
+                        <input type="password" placeholder="确认密码" name="passwordConfirm" class="form-control">
+                    </div>
+                </div>
+                <hr>
+                <div style="margin-bottom: 15px" class="row">
+                    <div class="col-lg-6">
+                        <label>
+                            <input type="text" placeholder="所在城市" name="firstname" class="form-control">
+                        </label>
+                    </div>
+                    <div class="col-lg-6">
+                        <label>
+                            <input type="text" placeholder="今年几何" name="lastname" class="form-control">
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label style="display: block" class="select">
+                        <select name="gender" class="form-control">
+                            <option value="0" selected disabled>兴趣爱好</option>
+                            <option value="1">痴迷游戏</option>
+                            <option value="2">户外旅游</option>
+                            <option value="3">购物淘宝</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox-list">
+                        <label>
+                            <input id="terms" type="checkbox" name="terms">&nbsp; 我已阅读并同意遵守《荒古协议》
+                        </label>
+                    </div>
+                </div>
+                <hr>
+                <div class="form-group mbn">
+                    <a href="extra-signin.html" class="btn btn-warning">
+                        <i class="fa fa-chevron-circle-left"></i>&nbsp;
+                        返回登陆
+                    </a>
+                    <button type="submit" class="btn btn-info pull-right">
+                        立即注册 &nbsp;
+                        <i class="fa fa-chevron-circle-right"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script src="/content/mgr/js/jquery-1.10.2.min.js"></script>
+    <script src="/content/mgr/vendors/iCheck/icheck.min.js"></script>
+
+    <script type="text/javascript">
+        $('input[type="checkbox"]').iCheck({
+            checkboxClass: 'icheckbox_minimal-grey',
+            increaseArea: '20%' // optional
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+
+    <link type="text/css" rel="stylesheet" href="/content/mgr/vendors/font-awesome/css/font-awesome.min.css">
+    <link type="text/css" rel="stylesheet" href="/content/mgr/vendors/bootstrap/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="/content/mgr/vendors/iCheck/skins/all.css">
+    <link type="text/css" rel="stylesheet" href="/content/mgr/css/themes/style1/pink-blue.css" class="default-style">
+</head>
+<body id="signin-page">
+    <div class="page-form">
+        <form id="amy-form" action="@Url.Action("Login", "Account")" method="post" class="form">
+            <div class="header-content">
+                <h1>用户登陆</h1>
+            </div>
+            <div class="body-content">
+                @*<p>Log in with a social network:</p>
+                <div class="row mbm text-center">
+                    <div class="col-md-4">
+                        <a href="#" class="btn btn-sm btn-twitter btn-block"><i class="fa fa-twitter fa-fw"></i>Twitter</a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="#" class="btn btn-sm btn-facebook btn-block"><i class="fa fa-facebook fa-fw"></i>Facebook</a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="#" class="btn btn-sm btn-google-plus btn-block"><i class="fa fa-google-plus fa-fw"></i>Google +</a>
+                    </div>
+                </div>*@
+                <div class="form-group">
+                    <div class="input-icon right">
+                        <i class="fa fa-user"></i>
+                        <input type="text" placeholder="用户账号" name="username" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-icon right">
+                        <i class="fa fa-key"></i>
+                        <input type="password" placeholder="用户密码" name="password" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group pull-left">
+                    <div class="checkbox-list">
+                        <label>
+                            <input type="checkbox">&nbsp; 记住登录状态
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group pull-right">
+                    <button type="submit" class="btn btn-success">
+                        立即登陆 &nbsp;
+                        <i class="fa fa-chevron-circle-right"></i>
+                    </button>
+                </div>
+                <div class="clearfix"></div>
+                @*<div class="forget-password">
+                    <h4>Forgotten your Password?</h4>
+                    <p>no worries, click <a href='#' class='btn-forgot-pwd'>here</a> to reset your password.</p>
+                </div>*@
+                <hr>
+                <p>
+                    还没有账号吗？ <a id="btn-register" href="/account/register">立即注册</a>
+                </p>
+            </div>
+        </form>
+    </div>
+
+    <script src="/content/mgr/js/jquery-1.10.2.min.js"></script>
+    <script src="/content/mgr/vendors/iCheck/icheck.min.js"></script>
+
+    <script type="text/javascript">
+        $('input[type="checkbox"]').iCheck({
+            checkboxClass: 'icheckbox_minimal-grey',
+            increaseArea: '20%' // optional
+        });
+    </script>
+</body>
+</html>

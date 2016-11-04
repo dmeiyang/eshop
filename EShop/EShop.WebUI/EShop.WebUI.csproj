@@ -1,0 +1,918 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{923F5F34-FE2B-495D-9FA5-56EF09CE2828}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EShop.WebUI</RootNamespace>
+    <AssemblyName>EShop.WebUI</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.9.9\lib\net45\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data.Entity.EF6, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.Entity.6.9.9\lib\net45\MySql.Data.Entity.EF6.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Content\mgr\vendors\ueditor\net\Config.cs" />
+    <Compile Include="Content\mgr\vendors\ueditor\net\ConfigHandler.cs" />
+    <Compile Include="Content\mgr\vendors\ueditor\net\CrawlerHandler.cs" />
+    <Compile Include="Content\mgr\vendors\ueditor\net\Handler.cs" />
+    <Compile Include="Content\mgr\vendors\ueditor\net\ListFileHandler.cs" />
+    <Compile Include="Content\mgr\vendors\ueditor\net\NotSupportedHandler.cs" />
+    <Compile Include="Content\mgr\vendors\ueditor\net\PathFormater.cs" />
+    <Compile Include="Content\mgr\vendors\ueditor\net\UploadHandler.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BasicController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\IdentityModels.cs" />
+    <Compile Include="Models\AccountViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\mgr\css\amy.plugins.css" />
+    <Content Include="Content\mgr\css\style-responsive.css" />
+    <Content Include="Content\mgr\css\themes\style1\orange-blue.css" />
+    <Content Include="Content\mgr\css\themes\style1\pink-blue.css" />
+    <Content Include="Content\mgr\css\themes\style1\pink-violet.css" />
+    <Content Include="Content\mgr\images\gallery\1.jpg" />
+    <Content Include="Content\mgr\images\gallery\2.jpg" />
+    <Content Include="Content\mgr\images\gallery\3.jpg" />
+    <Content Include="Content\mgr\images\gallery\business\秒杀抢购_list.png" />
+    <Content Include="Content\mgr\images\gallery\data\logout_bg.jpg" />
+    <Content Include="Content\mgr\images\gallery\data\login_bg.jpg" />
+    <Content Include="Content\mgr\images\gallery\data\head_default.jpg" />
+    <Content Include="Content\mgr\images\gallery\data\img02.png" />
+    <Content Include="Content\mgr\json2.js" />
+    <Content Include="Content\mgr\js\amy.default.js" />
+    <Content Include="Content\mgr\js\animation.js" />
+    <Content Include="Content\mgr\js\charts-chartjs.js" />
+    <Content Include="Content\mgr\js\charts-flotchart.js" />
+    <Content Include="Content\mgr\js\charts-highchart-area.js" />
+    <Content Include="Content\mgr\js\charts-highchart-column-bar.js" />
+    <Content Include="Content\mgr\js\charts-highchart-combinations.js" />
+    <Content Include="Content\mgr\js\charts-highchart-dynamic.js" />
+    <Content Include="Content\mgr\js\charts-highchart-line.js" />
+    <Content Include="Content\mgr\js\charts-highchart-more.js" />
+    <Content Include="Content\mgr\js\charts-highchart-pie.js" />
+    <Content Include="Content\mgr\js\charts-highchart-scatter-bubble.js" />
+    <Content Include="Content\mgr\js\email-compose-mail.js" />
+    <Content Include="Content\mgr\js\email-inbox.js" />
+    <Content Include="Content\mgr\js\extra-profile.js" />
+    <Content Include="Content\mgr\js\extra-signup.js" />
+    <Content Include="Content\mgr\js\form-components.js" />
+    <Content Include="Content\mgr\js\form-dropzone-file-upload.js" />
+    <Content Include="Content\mgr\js\form-multiple-file-upload.js" />
+    <Content Include="Content\mgr\js\form-validation.js" />
+    <Content Include="Content\mgr\js\form-wizard.js" />
+    <Content Include="Content\mgr\js\form-xeditable.js" />
+    <Content Include="Content\mgr\js\html5shiv.js" />
+    <Content Include="Content\mgr\js\index.js" />
+    <Content Include="Content\mgr\js\jplist.js" />
+    <Content Include="Content\mgr\js\jquery-1.10.2.min.js" />
+    <Content Include="Content\mgr\js\jquery-migrate-1.2.1.min.js" />
+    <Content Include="Content\mgr\js\jquery-ui.js" />
+    <Content Include="Content\mgr\js\jquery.cookie.js" />
+    <Content Include="Content\mgr\js\jquery.menu.js" />
+    <Content Include="Content\mgr\js\main.js" />
+    <Content Include="Content\mgr\js\moment.min.js" />
+    <Content Include="Content\mgr\js\page-calendar.js" />
+    <Content Include="Content\mgr\js\page-contact.js" />
+    <Content Include="Content\mgr\js\page-gallery.js" />
+    <Content Include="Content\mgr\js\respond.min.js" />
+    <Content Include="Content\mgr\js\table-action.js" />
+    <Content Include="Content\mgr\js\table-advanced.js" />
+    <Content Include="Content\mgr\js\table-datatables.js" />
+    <Content Include="Content\mgr\js\table-editable.js" />
+    <Content Include="Content\mgr\js\table-export.js" />
+    <Content Include="Content\mgr\js\table-filter.js" />
+    <Content Include="Content\mgr\js\table-sample.js" />
+    <Content Include="Content\mgr\js\ui-checkbox-radio.js" />
+    <Content Include="Content\mgr\js\ui-dropdown-select.js" />
+    <Content Include="Content\mgr\js\ui-editors.js" />
+    <Content Include="Content\mgr\js\ui-generals.js" />
+    <Content Include="Content\mgr\js\ui-nestable-list.js" />
+    <Content Include="Content\mgr\js\ui-notific8.js" />
+    <Content Include="Content\mgr\js\ui-portlets.js" />
+    <Content Include="Content\mgr\js\ui-progressbars.js" />
+    <Content Include="Content\mgr\js\ui-sliders.js" />
+    <Content Include="Content\mgr\js\ui-tabs.js" />
+    <Content Include="Content\mgr\js\ui-toastr-notifications.js" />
+    <Content Include="Content\mgr\js\ui-treeview.js" />
+    <Content Include="Content\mgr\vendors\animate.css\animate.css" />
+    <Content Include="Content\mgr\vendors\bootstrap-clockface\css\clockface.css" />
+    <Content Include="Content\mgr\vendors\bootstrap-clockface\js\clockface.js" />
+    <Content Include="Content\mgr\vendors\bootstrap-colorpicker\css\colorpicker.css" />
+    <Content Include="Content\mgr\vendors\bootstrap-colorpicker\js\bootstrap-colorpicker.js" />
+    <Content Include="Content\mgr\vendors\bootstrap-datepicker\css\datepicker.css" />
+    <Content Include="Content\mgr\vendors\bootstrap-datepicker\css\datepicker3.css" />
+    <Content Include="Content\mgr\vendors\bootstrap-datepicker\js\bootstrap-datepicker.js" />
+    <Content Include="Content\mgr\vendors\bootstrap-daterangepicker\daterangepicker-bs3.css" />
+    <Content Include="Content\mgr\vendors\bootstrap-daterangepicker\daterangepicker.js" />
+    <Content Include="Content\mgr\vendors\bootstrap-datetimepicker\css\bootstrap-datetimepicker.css" />
+    <Content Include="Content\mgr\vendors\bootstrap-datetimepicker\js\bootstrap-datetimepicker.min.js" />
+    <Content Include="Content\mgr\vendors\bootstrap-hover-dropdown\bootstrap-hover-dropdown.js" />
+    <Content Include="Content\mgr\vendors\bootstrap-markdown\css\bootstrap-markdown.min.css" />
+    <Content Include="Content\mgr\vendors\bootstrap-markdown\js\bootstrap-markdown.js" />
+    <Content Include="Content\mgr\vendors\bootstrap-progressbar\bootstrap-progressbar.min.js" />
+    <Content Include="Content\mgr\vendors\bootstrap-progressbar\css\bootstrap-progressbar-3.1.1.min.css" />
+    <Content Include="Content\mgr\vendors\bootstrap-select\bootstrap-select.min.css" />
+    <Content Include="Content\mgr\vendors\bootstrap-select\bootstrap-select.min.js" />
+    <Content Include="Content\mgr\vendors\bootstrap-switch\css\bootstrap-switch.css" />
+    <Content Include="Content\mgr\vendors\bootstrap-switch\js\bootstrap-switch.min.js" />
+    <Content Include="Content\mgr\vendors\bootstrap-timepicker\css\bootstrap-timepicker.min.css" />
+    <Content Include="Content\mgr\vendors\bootstrap-timepicker\js\bootstrap-timepicker.js" />
+    <Content Include="Content\mgr\vendors\bootstrap-wysihtml5\bootstrap3-wysihtml5.all.min.js" />
+    <Content Include="Content\mgr\vendors\bootstrap-wysihtml5\bootstrap3-wysihtml5.min.css" />
+    <Content Include="Content\mgr\vendors\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\mgr\vendors\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\mgr\vendors\calendar\zabuto_calendar.min.css" />
+    <Content Include="Content\mgr\vendors\calendar\zabuto_calendar.min.js" />
+    <Content Include="Content\mgr\vendors\charCount.js" />
+    <Content Include="Content\mgr\vendors\chart.js\Chart.min.js" />
+    <Content Include="Content\mgr\vendors\charts\echarts.min.js" />
+    <Content Include="Content\mgr\vendors\ckeditor\ckeditor.js" />
+    <Content Include="Content\mgr\vendors\DataTables\extensions\TableTools\css\dataTables.tableTools.min.css" />
+    <Content Include="Content\mgr\vendors\DataTables\extensions\TableTools\js\dataTables.tableTools.min.js" />
+    <Content Include="Content\mgr\vendors\DataTables\jquery.jeditable.js" />
+    <Content Include="Content\mgr\vendors\DataTables\media\css\dataTables.bootstrap.css" />
+    <Content Include="Content\mgr\vendors\DataTables\media\css\jquery.dataTables.css" />
+    <Content Include="Content\mgr\vendors\DataTables\media\js\dataTables.bootstrap.js" />
+    <Content Include="Content\mgr\vendors\DataTables\media\js\jquery.dataTables.js" />
+    <Content Include="Content\mgr\vendors\dropzone\css\dropzone.css" />
+    <Content Include="Content\mgr\vendors\dropzone\js\dropzone.js" />
+    <Content Include="Content\mgr\vendors\flot-chart\jquery.flot.categories.js" />
+    <Content Include="Content\mgr\vendors\flot-chart\jquery.flot.fillbetween.js" />
+    <Content Include="Content\mgr\vendors\flot-chart\jquery.flot.js" />
+    <Content Include="Content\mgr\vendors\flot-chart\jquery.flot.pie.js" />
+    <Content Include="Content\mgr\vendors\flot-chart\jquery.flot.resize.js" />
+    <Content Include="Content\mgr\vendors\flot-chart\jquery.flot.spline.js" />
+    <Content Include="Content\mgr\vendors\flot-chart\jquery.flot.stack.js" />
+    <Content Include="Content\mgr\vendors\flot-chart\jquery.flot.tooltip.js" />
+    <Content Include="Content\mgr\vendors\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Content\mgr\vendors\fullcalendar\fullcalendar.css" />
+    <Content Include="Content\mgr\vendors\fullcalendar\fullcalendar.min.js" />
+    <Content Include="Content\mgr\vendors\fullcalendar\fullcalendar.print.css" />
+    <Content Include="Content\mgr\vendors\gmaps\gmaps.js" />
+    <Content Include="Content\mgr\vendors\holder\holder.js" />
+    <Content Include="Content\mgr\vendors\iCheck\custom.min.js" />
+    <Content Include="Content\mgr\vendors\iCheck\icheck.min.js" />
+    <Content Include="Content\mgr\vendors\iCheck\skins\all.css" />
+    <Content Include="Content\mgr\vendors\iCheck\skins\flat\all.css" />
+    <Content Include="Content\mgr\vendors\iCheck\skins\futurico\futurico.css" />
+    <Content Include="Content\mgr\vendors\iCheck\skins\line\all.css" />
+    <Content Include="Content\mgr\vendors\iCheck\skins\minimal\all.css" />
+    <Content Include="Content\mgr\vendors\iCheck\skins\minimal\grey.png" />
+    <Content Include="Content\mgr\vendors\iCheck\skins\polaris\polaris.css" />
+    <Content Include="Content\mgr\vendors\iCheck\skins\square\all.css" />
+    <Content Include="Content\mgr\vendors\intro.js\intro.js" />
+    <Content Include="Content\mgr\vendors\intro.js\introjs.css" />
+    <Content Include="Content\mgr\vendors\ion.rangeSlider\css\ion.rangeSlider.css" />
+    <Content Include="Content\mgr\vendors\ion.rangeSlider\js\ion.rangeSlider.min.js" />
+    <Content Include="Content\mgr\vendors\jplist\html\css\jplist-custom.css" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs-450\arch-1.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs-450\arch-2.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs-450\autumn-1.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs-450\boats.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs-450\book-1.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs-450\business-1.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs-450\calendar-1.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs-450\car-1.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs-450\christmas-1.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs-450\christmas-2.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs-450\christmas-3.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs-450\city-1.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs-450\city-2.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs-450\coffee-grass.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs-450\coins.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs-450\crayons.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs-450\cupcakes.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs-450\eggs-nest.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs-450\flower-1.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs-450\flower-2.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs-450\flower-3.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs-450\fountain.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs-450\leaves.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs-450\lichterman.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs-450\pinecone.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs-450\river-1.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs-450\river-2.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs-450\sunset-1.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs-450\tree.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs-450\winter-1.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs-450\winter-2.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs-450\winter-sun.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs-450\woodstump.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs\arch-1.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs\arch-2.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs\autumn-1.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs\boats-1.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs\book-1.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs\business-1.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs\calendar-1.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs\car-1.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs\christmas-1.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs\christmas-2.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs\christmas-3.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs\city-1.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs\city-2.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs\coffee-grass.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs\coins.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs\crayons.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs\cupcakes.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs\eggs-nest.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs\flower-1.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs\flower-2.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs\flower-3.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs\fountain.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs\leaves.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs\lichterman.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs\pinecone.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs\river-1.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs\river-2.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs\sunset-1.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs\tree.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs\winter-1.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs\winter-2.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs\winter-sun.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\img\thumbs\woodstump.jpg" />
+    <Content Include="Content\mgr\vendors\jplist\html\js\jplist.min.js" />
+    <Content Include="Content\mgr\vendors\jplist\html\js\vendor\modernizr.min.js" />
+    <Content Include="Content\mgr\vendors\jquery-bootstrap-wizard\custom.css" />
+    <Content Include="Content\mgr\vendors\jquery-bootstrap-wizard\jquery.bootstrap.wizard.min.js" />
+    <Content Include="Content\mgr\vendors\jquery-cookie\jquery.cookie.js" />
+    <Content Include="Content\mgr\vendors\jquery-file-upload\css\blueimp-gallery.min.css" />
+    <Content Include="Content\mgr\vendors\jquery-file-upload\css\jquery.fileupload-ui.css" />
+    <Content Include="Content\mgr\vendors\jquery-file-upload\css\jquery.fileupload.css" />
+    <Content Include="Content\mgr\vendors\jquery-file-upload\js\cors\jquery.xdr-transport.js" />
+    <Content Include="Content\mgr\vendors\jquery-file-upload\js\jquery.fileupload-audio.js" />
+    <Content Include="Content\mgr\vendors\jquery-file-upload\js\jquery.fileupload-image.js" />
+    <Content Include="Content\mgr\vendors\jquery-file-upload\js\jquery.fileupload-process.js" />
+    <Content Include="Content\mgr\vendors\jquery-file-upload\js\jquery.fileupload-ui.js" />
+    <Content Include="Content\mgr\vendors\jquery-file-upload\js\jquery.fileupload-validate.js" />
+    <Content Include="Content\mgr\vendors\jquery-file-upload\js\jquery.fileupload-video.js" />
+    <Content Include="Content\mgr\vendors\jquery-file-upload\js\jquery.fileupload.js" />
+    <Content Include="Content\mgr\vendors\jquery-file-upload\js\jquery.iframe-transport.js" />
+    <Content Include="Content\mgr\vendors\jquery-file-upload\js\vendor\canvas-to-blob.min.js" />
+    <Content Include="Content\mgr\vendors\jquery-file-upload\js\vendor\jquery.blueimp-gallery.min.js" />
+    <Content Include="Content\mgr\vendors\jquery-file-upload\js\vendor\jquery.ui.widget.js" />
+    <Content Include="Content\mgr\vendors\jquery-file-upload\js\vendor\load-image.min.js" />
+    <Content Include="Content\mgr\vendors\jquery-file-upload\js\vendor\tmpl.min.js" />
+    <Content Include="Content\mgr\vendors\jquery-highcharts\data.js" />
+    <Content Include="Content\mgr\vendors\jquery-highcharts\drilldown.js" />
+    <Content Include="Content\mgr\vendors\jquery-highcharts\exporting.js" />
+    <Content Include="Content\mgr\vendors\jquery-highcharts\funnel.js" />
+    <Content Include="Content\mgr\vendors\jquery-highcharts\highchart.js" />
+    <Content Include="Content\mgr\vendors\jquery-highcharts\highcharts-more.js" />
+    <Content Include="Content\mgr\vendors\jquery-highcharts\highcharts.js" />
+    <Content Include="Content\mgr\vendors\jquery-maskedinput\jquery-maskedinput.js" />
+    <Content Include="Content\mgr\vendors\jquery-nestable\jquery.nestable.js" />
+    <Content Include="Content\mgr\vendors\jquery-nestable\nestable.css" />
+    <Content Include="Content\mgr\vendors\jquery-news-ticker\jquery.newsTicker.min.js" />
+    <Content Include="Content\mgr\vendors\jquery-notific8\jquery.notific8.min.css" />
+    <Content Include="Content\mgr\vendors\jquery-notific8\jquery.notific8.min.js" />
+    <Content Include="Content\mgr\vendors\jquery-notific8\notific8.js" />
+    <Content Include="Content\mgr\vendors\jquery-pace\pace.css" />
+    <Content Include="Content\mgr\vendors\jquery-pace\pace.min.js" />
+    <Content Include="Content\mgr\vendors\jquery-steps\css\jquery.steps.css" />
+    <Content Include="Content\mgr\vendors\jquery-steps\js\jquery.steps.min.js" />
+    <Content Include="Content\mgr\vendors\jquery-tablesorter\jquery.tablesorter.js" />
+    <Content Include="Content\mgr\vendors\jquery-tablesorter\themes\blue\style-custom.css" />
+    <Content Include="Content\mgr\vendors\jquery-toastr\toastr.min.css" />
+    <Content Include="Content\mgr\vendors\jquery-toastr\toastr.min.js" />
+    <Content Include="Content\mgr\vendors\jquery-treetable\javascripts\src\jquery.treetable.js" />
+    <Content Include="Content\mgr\vendors\jquery-treetable\stylesheets\jquery.treetable.css" />
+    <Content Include="Content\mgr\vendors\jquery-treetable\stylesheets\jquery.treetable.theme.custom.css" />
+    <Content Include="Content\mgr\vendors\jquery-ui-1.10.4.custom\css\ui-lightness\jquery-ui-1.10.4.custom.min.css" />
+    <Content Include="Content\mgr\vendors\jquery-validate\jquery-me.validate.js" />
+    <Content Include="Content\mgr\vendors\jquery-validate\jquery.form.js" />
+    <Content Include="Content\mgr\vendors\jquery-validate\jquery.validate.min.js" />
+    <Content Include="Content\mgr\vendors\jquery-validate\message_cn.js" />
+    <Content Include="Content\mgr\vendors\jstree\dist\jstree.min.js" />
+    <Content Include="Content\mgr\vendors\jstree\dist\themes\default\style.min.css" />
+    <Content Include="Content\mgr\vendors\lightbox\css\lightbox.css" />
+    <Content Include="Content\mgr\vendors\lightbox\img\close.png" />
+    <Content Include="Content\mgr\vendors\lightbox\img\loading.gif" />
+    <Content Include="Content\mgr\vendors\lightbox\img\next.png" />
+    <Content Include="Content\mgr\vendors\lightbox\img\prev.png" />
+    <Content Include="Content\mgr\vendors\lightbox\js\lightbox.min.js" />
+    <Content Include="Content\mgr\vendors\metisMenu\jquery.metisMenu.js" />
+    <Content Include="Content\mgr\vendors\mixitup\src\jquery.mixitup.js" />
+    <Content Include="Content\mgr\vendors\moment\moment.js" />
+    <Content Include="Content\mgr\vendors\moment\monment.zh-cn.js" />
+    <Content Include="Content\mgr\vendors\multi-select\css\multi-select-madmin.css" />
+    <Content Include="Content\mgr\vendors\multi-select\js\jquery.multi-select.js" />
+    <Content Include="Content\mgr\vendors\nouislider\jquery.nouislider.css" />
+    <Content Include="Content\mgr\vendors\nouislider\jquery.nouislider.min.js" />
+    <Content Include="Content\mgr\vendors\pageloader\images\loader1.GIF" />
+    <Content Include="Content\mgr\vendors\pageloader\images\loader10.GIF" />
+    <Content Include="Content\mgr\vendors\pageloader\images\loader11.GIF" />
+    <Content Include="Content\mgr\vendors\pageloader\images\loader12.GIF" />
+    <Content Include="Content\mgr\vendors\pageloader\images\loader13.GIF" />
+    <Content Include="Content\mgr\vendors\pageloader\images\loader14.GIF" />
+    <Content Include="Content\mgr\vendors\pageloader\images\loader16.GIF" />
+    <Content Include="Content\mgr\vendors\pageloader\images\loader17.GIF" />
+    <Content Include="Content\mgr\vendors\pageloader\images\loader2.GIF" />
+    <Content Include="Content\mgr\vendors\pageloader\images\loader3.GIF" />
+    <Content Include="Content\mgr\vendors\pageloader\images\loader4.GIF" />
+    <Content Include="Content\mgr\vendors\pageloader\images\loader5.GIF" />
+    <Content Include="Content\mgr\vendors\pageloader\images\loader6.GIF" />
+    <Content Include="Content\mgr\vendors\pageloader\images\loader7.GIF" />
+    <Content Include="Content\mgr\vendors\pageloader\images\loader8.GIF" />
+    <Content Include="Content\mgr\vendors\pageloader\images\loader9.GIF" />
+    <Content Include="Content\mgr\vendors\pageloader\pageloader.css" />
+    <Content Include="Content\mgr\vendors\responsive-tabs\responsive-tabs.js" />
+    <Content Include="Content\mgr\vendors\sco.message\sco.message.css" />
+    <Content Include="Content\mgr\vendors\sco.message\sco.message.js" />
+    <Content Include="Content\mgr\vendors\select2\select2-madmin.css" />
+    <Content Include="Content\mgr\vendors\select2\select2.css" />
+    <Content Include="Content\mgr\vendors\select2\select2.min.js" />
+    <Content Include="Content\mgr\vendors\select2\select2.png" />
+    <Content Include="Content\mgr\vendors\select2\select2x2.png" />
+    <Content Include="Content\mgr\vendors\select2\spinner.gif" />
+    <Content Include="Content\mgr\vendors\slimScroll\jquery.slimscroll.js" />
+    <Content Include="Content\mgr\vendors\summernote\summernote.css" />
+    <Content Include="Content\mgr\vendors\summernote\summernote.js" />
+    <Content Include="Content\mgr\vendors\tableExport\html2canvas.js" />
+    <Content Include="Content\mgr\vendors\tableExport\icon\csv.png" />
+    <Content Include="Content\mgr\vendors\tableExport\icon\json.png" />
+    <Content Include="Content\mgr\vendors\tableExport\icon\pdf.png" />
+    <Content Include="Content\mgr\vendors\tableExport\icon\ppt.png" />
+    <Content Include="Content\mgr\vendors\tableExport\icon\sql.png" />
+    <Content Include="Content\mgr\vendors\tableExport\icon\txt.png" />
+    <Content Include="Content\mgr\vendors\tableExport\icon\word.png" />
+    <Content Include="Content\mgr\vendors\tableExport\icon\xls.png" />
+    <Content Include="Content\mgr\vendors\tableExport\icon\xml.png" />
+    <Content Include="Content\mgr\vendors\tableExport\jquery.base64.js" />
+    <Content Include="Content\mgr\vendors\tableExport\jspdf\jspdf.js" />
+    <Content Include="Content\mgr\vendors\tableExport\jspdf\libs\base64.js" />
+    <Content Include="Content\mgr\vendors\tableExport\jspdf\libs\sprintf.js" />
+    <Content Include="Content\mgr\vendors\tableExport\tableExport.js" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\anchor\anchor.html" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\attachment\attachment.css" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\attachment\attachment.html" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\attachment\attachment.js" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\attachment\fileTypeImages\icon_chm.gif" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\attachment\fileTypeImages\icon_default.png" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\attachment\fileTypeImages\icon_doc.gif" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\attachment\fileTypeImages\icon_exe.gif" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\attachment\fileTypeImages\icon_jpg.gif" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\attachment\fileTypeImages\icon_mp3.gif" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\attachment\fileTypeImages\icon_mv.gif" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\attachment\fileTypeImages\icon_pdf.gif" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\attachment\fileTypeImages\icon_ppt.gif" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\attachment\fileTypeImages\icon_psd.gif" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\attachment\fileTypeImages\icon_rar.gif" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\attachment\fileTypeImages\icon_txt.gif" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\attachment\fileTypeImages\icon_xls.gif" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\attachment\images\alignicon.gif" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\attachment\images\alignicon.png" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\attachment\images\bg.png" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\attachment\images\file-icons.gif" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\attachment\images\file-icons.png" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\attachment\images\icons.gif" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\attachment\images\icons.png" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\attachment\images\image.png" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\attachment\images\progress.png" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\attachment\images\success.gif" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\attachment\images\success.png" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\background\background.css" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\background\background.html" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\background\background.js" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\background\images\bg.png" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\background\images\success.png" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\charts\chart.config.js" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\charts\charts.css" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\charts\charts.html" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\charts\charts.js" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\charts\images\charts0.png" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\charts\images\charts1.png" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\charts\images\charts2.png" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\charts\images\charts3.png" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\charts\images\charts4.png" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\charts\images\charts5.png" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\emotion\emotion.css" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\emotion\emotion.html" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\emotion\emotion.js" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\emotion\images\0.gif" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\emotion\images\bface.gif" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\emotion\images\cface.gif" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\emotion\images\fface.gif" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\emotion\images\jxface2.gif" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\emotion\images\neweditor-tab-bg.png" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\emotion\images\tface.gif" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\emotion\images\wface.gif" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\emotion\images\yface.gif" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\gmap\gmap.html" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\help\help.css" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\help\help.html" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\help\help.js" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\image\image.css" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\image\image.html" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\image\image.js" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\image\images\alignicon.jpg" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\image\images\bg.png" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\image\images\icons.gif" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\image\images\icons.png" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\image\images\image.png" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\image\images\progress.png" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\image\images\success.gif" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\image\images\success.png" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\insertframe\insertframe.html" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\internal.js" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\link\link.html" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\map\map.html" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\map\show.html" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\music\music.css" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\music\music.html" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\music\music.js" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\preview\preview.html" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\scrawl\images\addimg.png" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\scrawl\images\brush.png" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\scrawl\images\delimg.png" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\scrawl\images\delimgH.png" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\scrawl\images\empty.png" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\scrawl\images\emptyH.png" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\scrawl\images\eraser.png" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\scrawl\images\redo.png" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\scrawl\images\redoH.png" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\scrawl\images\scale.png" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\scrawl\images\scaleH.png" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\scrawl\images\size.png" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\scrawl\images\undo.png" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\scrawl\images\undoH.png" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\scrawl\scrawl.css" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\scrawl\scrawl.html" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\scrawl\scrawl.js" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\searchreplace\searchreplace.html" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\searchreplace\searchreplace.js" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\snapscreen\snapscreen.html" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\spechars\spechars.html" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\spechars\spechars.js" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\table\dragicon.png" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\table\edittable.css" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\table\edittable.html" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\table\edittable.js" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\table\edittd.html" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\table\edittip.html" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\template\config.js" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\template\images\bg.gif" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\template\images\pre0.png" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\template\images\pre1.png" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\template\images\pre2.png" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\template\images\pre3.png" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\template\images\pre4.png" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\template\template.css" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\template\template.html" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\template\template.js" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\video\images\bg.png" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\video\images\center_focus.jpg" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\video\images\file-icons.gif" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\video\images\file-icons.png" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\video\images\icons.gif" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\video\images\icons.png" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\video\images\image.png" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\video\images\left_focus.jpg" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\video\images\none_focus.jpg" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\video\images\progress.png" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\video\images\right_focus.jpg" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\video\images\success.gif" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\video\images\success.png" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\video\video.css" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\video\video.html" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\video\video.js" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\webapp\webapp.html" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\wordimage\fClipboard_ueditor.swf" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\wordimage\imageUploader.swf" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\wordimage\tangram.js" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\wordimage\wordimage.html" />
+    <Content Include="Content\mgr\vendors\ueditor\dialogs\wordimage\wordimage.js" />
+    <Content Include="Content\mgr\vendors\ueditor\index.html" />
+    <Content Include="Content\mgr\vendors\ueditor\lang\en\en.js" />
+    <Content Include="Content\mgr\vendors\ueditor\lang\en\images\addimage.png" />
+    <Content Include="Content\mgr\vendors\ueditor\lang\en\images\alldeletebtnhoverskin.png" />
+    <Content Include="Content\mgr\vendors\ueditor\lang\en\images\alldeletebtnupskin.png" />
+    <Content Include="Content\mgr\vendors\ueditor\lang\en\images\background.png" />
+    <Content Include="Content\mgr\vendors\ueditor\lang\en\images\button.png" />
+    <Content Include="Content\mgr\vendors\ueditor\lang\en\images\copy.png" />
+    <Content Include="Content\mgr\vendors\ueditor\lang\en\images\deletedisable.png" />
+    <Content Include="Content\mgr\vendors\ueditor\lang\en\images\deleteenable.png" />
+    <Content Include="Content\mgr\vendors\ueditor\lang\en\images\listbackground.png" />
+    <Content Include="Content\mgr\vendors\ueditor\lang\en\images\localimage.png" />
+    <Content Include="Content\mgr\vendors\ueditor\lang\en\images\music.png" />
+    <Content Include="Content\mgr\vendors\ueditor\lang\en\images\rotateleftdisable.png" />
+    <Content Include="Content\mgr\vendors\ueditor\lang\en\images\rotateleftenable.png" />
+    <Content Include="Content\mgr\vendors\ueditor\lang\en\images\rotaterightdisable.png" />
+    <Content Include="Content\mgr\vendors\ueditor\lang\en\images\rotaterightenable.png" />
+    <Content Include="Content\mgr\vendors\ueditor\lang\en\images\upload.png" />
+    <Content Include="Content\mgr\vendors\ueditor\lang\zh-cn\images\copy.png" />
+    <Content Include="Content\mgr\vendors\ueditor\lang\zh-cn\images\localimage.png" />
+    <Content Include="Content\mgr\vendors\ueditor\lang\zh-cn\images\music.png" />
+    <Content Include="Content\mgr\vendors\ueditor\lang\zh-cn\images\upload.png" />
+    <Content Include="Content\mgr\vendors\ueditor\lang\zh-cn\zh-cn.js" />
+    <Content Include="Content\mgr\vendors\ueditor\net\upload\image\20160715\6360419310377928118697476.jpg" />
+    <Content Include="Content\mgr\vendors\ueditor\themes\default\css\ueditor.css" />
+    <Content Include="Content\mgr\vendors\ueditor\themes\default\css\ueditor.min.css" />
+    <Content Include="Content\mgr\vendors\ueditor\themes\default\dialogbase.css" />
+    <Content Include="Content\mgr\vendors\ueditor\themes\default\images\anchor.gif" />
+    <Content Include="Content\mgr\vendors\ueditor\themes\default\images\arrow.png" />
+    <Content Include="Content\mgr\vendors\ueditor\themes\default\images\arrow_down.png" />
+    <Content Include="Content\mgr\vendors\ueditor\themes\default\images\arrow_up.png" />
+    <Content Include="Content\mgr\vendors\ueditor\themes\default\images\button-bg.gif" />
+    <Content Include="Content\mgr\vendors\ueditor\themes\default\images\cancelbutton.gif" />
+    <Content Include="Content\mgr\vendors\ueditor\themes\default\images\charts.png" />
+    <Content Include="Content\mgr\vendors\ueditor\themes\default\images\cursor_h.gif" />
+    <Content Include="Content\mgr\vendors\ueditor\themes\default\images\cursor_h.png" />
+    <Content Include="Content\mgr\vendors\ueditor\themes\default\images\cursor_v.gif" />
+    <Content Include="Content\mgr\vendors\ueditor\themes\default\images\cursor_v.png" />
+    <Content Include="Content\mgr\vendors\ueditor\themes\default\images\dialog-title-bg.png" />
+    <Content Include="Content\mgr\vendors\ueditor\themes\default\images\filescan.png" />
+    <Content Include="Content\mgr\vendors\ueditor\themes\default\images\highlighted.gif" />
+    <Content Include="Content\mgr\vendors\ueditor\themes\default\images\icons-all.gif" />
+    <Content Include="Content\mgr\vendors\ueditor\themes\default\images\icons.gif" />
+    <Content Include="Content\mgr\vendors\ueditor\themes\default\images\icons.png" />
+    <Content Include="Content\mgr\vendors\ueditor\themes\default\images\loaderror.png" />
+    <Content Include="Content\mgr\vendors\ueditor\themes\default\images\loading.gif" />
+    <Content Include="Content\mgr\vendors\ueditor\themes\default\images\lock.gif" />
+    <Content Include="Content\mgr\vendors\ueditor\themes\default\images\neweditor-tab-bg.png" />
+    <Content Include="Content\mgr\vendors\ueditor\themes\default\images\pagebreak.gif" />
+    <Content Include="Content\mgr\vendors\ueditor\themes\default\images\scale.png" />
+    <Content Include="Content\mgr\vendors\ueditor\themes\default\images\sortable.png" />
+    <Content Include="Content\mgr\vendors\ueditor\themes\default\images\spacer.gif" />
+    <Content Include="Content\mgr\vendors\ueditor\themes\default\images\sparator_v.png" />
+    <Content Include="Content\mgr\vendors\ueditor\themes\default\images\table-cell-align.png" />
+    <Content Include="Content\mgr\vendors\ueditor\themes\default\images\tangram-colorpicker.png" />
+    <Content Include="Content\mgr\vendors\ueditor\themes\default\images\toolbar_bg.png" />
+    <Content Include="Content\mgr\vendors\ueditor\themes\default\images\unhighlighted.gif" />
+    <Content Include="Content\mgr\vendors\ueditor\themes\default\images\upload.png" />
+    <Content Include="Content\mgr\vendors\ueditor\themes\default\images\videologo.gif" />
+    <Content Include="Content\mgr\vendors\ueditor\themes\default\images\word.gif" />
+    <Content Include="Content\mgr\vendors\ueditor\themes\default\images\wordpaste.png" />
+    <Content Include="Content\mgr\vendors\ueditor\themes\iframe.css" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\codemirror\codemirror.css" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\codemirror\codemirror.js" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\highcharts\adapters\mootools-adapter.js" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\highcharts\adapters\mootools-adapter.src.js" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\highcharts\adapters\prototype-adapter.js" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\highcharts\adapters\prototype-adapter.src.js" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\highcharts\adapters\standalone-framework.js" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\highcharts\adapters\standalone-framework.src.js" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\highcharts\highcharts-more.js" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\highcharts\highcharts-more.src.js" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\highcharts\highcharts.js" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\highcharts\highcharts.src.js" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\highcharts\modules\annotations.js" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\highcharts\modules\annotations.src.js" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\highcharts\modules\canvas-tools.js" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\highcharts\modules\canvas-tools.src.js" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\highcharts\modules\data.js" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\highcharts\modules\data.src.js" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\highcharts\modules\drilldown.js" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\highcharts\modules\drilldown.src.js" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\highcharts\modules\exporting.js" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\highcharts\modules\exporting.src.js" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\highcharts\modules\funnel.js" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\highcharts\modules\funnel.src.js" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\highcharts\modules\heatmap.js" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\highcharts\modules\heatmap.src.js" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\highcharts\modules\map.js" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\highcharts\modules\map.src.js" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\highcharts\modules\no-data-to-display.js" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\highcharts\modules\no-data-to-display.src.js" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\highcharts\themes\dark-blue.js" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\highcharts\themes\dark-green.js" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\highcharts\themes\gray.js" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\highcharts\themes\grid.js" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\highcharts\themes\skies.js" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\jquery-1.10.2.js" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\jquery-1.10.2.min.js" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\snapscreen\UEditorSnapscreen.exe" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\SyntaxHighlighter\shCore.js" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\SyntaxHighlighter\shCoreDefault.css" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\video-js\font\vjs.svg" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\video-js\video-js.css" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\video-js\video-js.min.css" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\video-js\video-js.swf" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\video-js\video.dev.js" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\video-js\video.js" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\webuploader\Uploader.swf" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\webuploader\webuploader.css" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\webuploader\webuploader.custom.js" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\webuploader\webuploader.custom.min.js" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\webuploader\webuploader.flashonly.js" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\webuploader\webuploader.flashonly.min.js" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\webuploader\webuploader.html5only.js" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\webuploader\webuploader.html5only.min.js" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\webuploader\webuploader.js" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\webuploader\webuploader.min.js" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\webuploader\webuploader.withoutimage.js" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\webuploader\webuploader.withoutimage.min.js" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\zeroclipboard\ZeroClipboard.js" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\zeroclipboard\ZeroClipboard.min.js" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\zeroclipboard\ZeroClipboard.swf" />
+    <Content Include="Content\mgr\vendors\ueditor\ueditor.all.js" />
+    <Content Include="Content\mgr\vendors\ueditor\ueditor.all.min.js" />
+    <Content Include="Content\mgr\vendors\ueditor\ueditor.config.js" />
+    <Content Include="Content\mgr\vendors\ueditor\ueditor.parse.js" />
+    <Content Include="Content\mgr\vendors\ueditor\ueditor.parse.min.js" />
+    <Content Include="Content\mgr\vendors\webuploader\amy.webuploader.js" />
+    <Content Include="Content\mgr\vendors\webuploader\images\bg.png" />
+    <Content Include="Content\mgr\vendors\webuploader\images\icons.png" />
+    <Content Include="Content\mgr\vendors\webuploader\images\image.png" />
+    <Content Include="Content\mgr\vendors\webuploader\images\progress.png" />
+    <Content Include="Content\mgr\vendors\webuploader\images\success.png" />
+    <Content Include="Content\mgr\vendors\webuploader\Uploader.swf" />
+    <Content Include="Content\mgr\vendors\webuploader\webupload.mult.js" />
+    <Content Include="Content\mgr\vendors\webuploader\webuploader.css" />
+    <Content Include="Content\mgr\vendors\webuploader\webuploader.custom.js" />
+    <Content Include="Content\mgr\vendors\webuploader\webuploader.custom.min.js" />
+    <Content Include="Content\mgr\vendors\webuploader\webuploader.fis.js" />
+    <Content Include="Content\mgr\vendors\webuploader\webuploader.flashonly.js" />
+    <Content Include="Content\mgr\vendors\webuploader\webuploader.flashonly.min.js" />
+    <Content Include="Content\mgr\vendors\webuploader\webuploader.html5only.js" />
+    <Content Include="Content\mgr\vendors\webuploader\webuploader.html5only.min.js" />
+    <Content Include="Content\mgr\vendors\webuploader\webuploader.js" />
+    <Content Include="Content\mgr\vendors\webuploader\webuploader.min.js" />
+    <Content Include="Content\mgr\vendors\webuploader\webuploader.noimage.js" />
+    <Content Include="Content\mgr\vendors\webuploader\webuploader.noimage.min.js" />
+    <Content Include="Content\mgr\vendors\webuploader\webuploader.nolog.js" />
+    <Content Include="Content\mgr\vendors\webuploader\webuploader.nolog.min.js" />
+    <Content Include="Content\mgr\vendors\webuploader\webuploader.withoutimage.js" />
+    <Content Include="Content\mgr\vendors\webuploader\webuploader.withoutimage.min.js" />
+    <Content Include="Content\mgr\vendors\x-editable\bootstrap3-editable\css\bootstrap-editable.css" />
+    <Content Include="Content\mgr\vendors\x-editable\bootstrap3-editable\js\bootstrap-editable.min.js" />
+    <Content Include="Content\mgr\vendors\x-editable\demo-mock.js" />
+    <Content Include="Content\mgr\vendors\x-editable\inputs-ext\address\address.css" />
+    <Content Include="Content\mgr\vendors\x-editable\inputs-ext\address\address.js" />
+    <Content Include="Content\mgr\vendors\x-editable\inputs-ext\typeaheadjs\lib\typeahead.js" />
+    <Content Include="Content\mgr\vendors\x-editable\inputs-ext\typeaheadjs\typeaheadjs.js" />
+    <Content Include="Content\mgr\vendors\x-editable\inputs-ext\wysihtml5\wysihtml5.js" />
+    <Content Include="Content\mgr\vendors\x-editable\jquery.mockjax.js" />
+    <Content Include="Content\mgr\vendors\x-editable\select2\lib\select2-madmin.css" />
+    <Content Include="Content\mgr\vendors\x-editable\select2\lib\select2.js" />
+    <Content Include="Content\mgr\vendors\zclip\checkmark.png" />
+    <Content Include="Content\mgr\vendors\zclip\index.html" />
+    <Content Include="Content\mgr\vendors\zclip\jquery.zclip.min.js" />
+    <Content Include="Content\mgr\vendors\zclip\ZeroClipboard.swf" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Content\mgr\vendors\jquery-ui-1.10.3.custom\css\ui-lightness\" />
+    <Folder Include="Content\mgr\vendors\ueditor\net\upload\image\20160118\" />
+    <Folder Include="Views\Basic\" />
+    <Folder Include="Views\Home\" />
+    <Folder Include="Views\User\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <Content Include="Content\mgr\vendors\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\mgr\vendors\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\mgr\vendors\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\mgr\vendors\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\mgr\vendors\select2\select2-madmin.css.bak" />
+    <Content Include="Content\mgr\vendors\select2\select2.min.js.bak" />
+    <Content Include="Content\mgr\vendors\ueditor\net\config.json" />
+    <Content Include="Content\mgr\vendors\ueditor\net\controller.ashx" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\jquery-1.10.2.min.map" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\video-js\font\vjs.eot" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\video-js\font\vjs.ttf" />
+    <Content Include="Content\mgr\vendors\ueditor\third-party\video-js\font\vjs.woff" />
+    <None Include="Project_Readme.html" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EShop.Data\EShop.Data.csproj">
+      <Project>{67aafbbc-c942-43f3-a2f4-5ea715e19aec}</Project>
+      <Name>EShop.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>14787</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:2016/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>
