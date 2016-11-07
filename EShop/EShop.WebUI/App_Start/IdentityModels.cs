@@ -6,7 +6,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace EShop.WebUI
 {
-    // 可以通过向 ApplicationUser 类添加更多属性来为用户添加配置文件数据。若要了解详细信息，请访问 http://go.microsoft.com/fwlink/?LinkID=317594。
+    // 可以通过向 ApplicationUser 类添加更多属性来为用户添加配置文件数据
     public class ApplicationUser : IdentityUser
     {
         public virtual string City { get; set; }
@@ -27,12 +27,19 @@ namespace EShop.WebUI
         }
     }
 
+    // 可以通过向 ApplicationRole 类添加更多属性来为角色添加配置文件数据
+    public class ApplicationRole : IdentityRole
+    {
+        public ApplicationRole()
+        {
+            this.Id = System.Guid.NewGuid().ToString("N");
+        }
+    }
+
+    // 可以通过 ApplicationDbContext 链接数据库并管理数据库
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
-        {
-        }
+        public ApplicationDbContext() : base("DefaultConnection", throwIfV1Schema: false) { }
 
         public static ApplicationDbContext Create()
         {

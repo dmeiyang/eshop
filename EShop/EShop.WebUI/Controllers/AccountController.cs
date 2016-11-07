@@ -17,6 +17,8 @@ namespace EShop.WebUI.Controllers
 
         protected ApplicationUserManager UserManager { get { return HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>(); } }
 
+        protected ApplicationRoleManager RoleManager { get { return HttpContext.GetOwinContext().GetUserManager<ApplicationRoleManager>(); } }
+
         public ActionResult Login()
         {
             return View();
@@ -34,25 +36,27 @@ namespace EShop.WebUI.Controllers
             if (user == null)
                 return Json(new { Flag = false, Content = "用户名或密码错误！！！" });
 
+            //UserManager.AddToRole(user.Id, "user");
+
             // 2. 利用ASP.NET Identity获取identity 对象
 
             // mvc自带创建identity方法
-            // var identity = await UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
+            var identity = await UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
 
             // 自定义创建identity方法
-            var claims = new List<System.Security.Claims.Claim>();
+            //var claims = new List<System.Security.Claims.Claim>();
 
-            claims.Add(new System.Security.Claims.Claim(System.Security.Claims.ClaimTypes.NameIdentifier, user.Id));
-            claims.Add(new System.Security.Claims.Claim(System.Security.Claims.ClaimTypes.Name, user.UserName));
-            claims.Add(new System.Security.Claims.Claim("http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider", "ASP.NET Identity"));
-            claims.Add(new System.Security.Claims.Claim("AspNet.Identity.SecurityStamp", user.SecurityStamp));
+            //claims.Add(new System.Security.Claims.Claim(System.Security.Claims.ClaimTypes.NameIdentifier, user.Id));
+            //claims.Add(new System.Security.Claims.Claim(System.Security.Claims.ClaimTypes.Name, user.UserName));
+            //claims.Add(new System.Security.Claims.Claim("http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider", "ASP.NET Identity"));
+            //claims.Add(new System.Security.Claims.Claim("AspNet.Identity.SecurityStamp", user.SecurityStamp));
 
-            claims.Add(new System.Security.Claims.Claim(System.Security.Claims.ClaimTypes.Role, "user"));
+            ////claims.Add(new System.Security.Claims.Claim(System.Security.Claims.ClaimTypes.Role, "user"));
 
-            //声明身份验证方式
-            var identity = new System.Security.Claims.ClaimsIdentity("ApplicationCookie");
+            ////声明身份验证方式
+            //var identity = new System.Security.Claims.ClaimsIdentity("ApplicationCookie");
 
-            identity.AddClaims(claims);
+            //identity.AddClaims(claims);
 
             // 3. 将上面拿到的identity对象登录
             AuthenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = true }, identity);
