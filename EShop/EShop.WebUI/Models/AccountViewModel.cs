@@ -17,7 +17,7 @@ namespace EShop.WebUI.Models
 
         public string City { get; set; }
 
-        public string Age { get; set; }
+        public int Age { get; set; }
 
         public string Hobby { get; set; }
     }

@@ -68,7 +68,7 @@ namespace EShop.WebUI.Controllers
         [HttpPost]
         public async Task<ActionResult> Register(Models.RegisterViewModel model)
         {
-            //var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };
+            //var user = new ApplicationUser { UserName = model.UserName, Email = model.Email, City = model.City, Age = model.Age };
 
             //var result = await UserManager.CreateAsync(user, model.Password);
 
@@ -89,7 +89,9 @@ namespace EShop.WebUI.Controllers
                 SecurityStamp = Guid.NewGuid().ToString(),
                 Email = model.Email,
                 PasswordHash = UserManager.PasswordHasher.HashPassword(model.Password),
-                UserName = model.UserName
+                UserName = model.UserName,
+                City=model.City,
+                Age=model.Age
             });
 
             var result = await db.SaveChangesAsync();

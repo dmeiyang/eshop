@@ -13,8 +13,6 @@ namespace EShop.WebUI.Controllers
         {
             Response.Write(string.Format("我是系统首页！！！亲爱的{0}，欢迎回来", User.Identity.Name));
             Response.Write(string.Format("我是系统首页！！！亲爱的{0}，欢迎回来", CurrentUser));
-
-            
         }
     }
 }

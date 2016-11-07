@@ -11,7 +11,9 @@ create table aspnetusers
 	LockoutEndDateUtc datetime null comment '锁定结束时间',
 	LockoutEnabled bit not null comment '是否启用锁定',
 	AccessFailedCount int not null comment '登陆失败次数',
-	UserName varchar(50) not null comment '用户名称'
+	UserName varchar(50) not null comment '用户名称',
+	City varchar(50) null comment '所在城市',
+	Age int default 0 not null comment '今年几何'
 ) comment '用户表';
 
 create table aspnetuserclaims
