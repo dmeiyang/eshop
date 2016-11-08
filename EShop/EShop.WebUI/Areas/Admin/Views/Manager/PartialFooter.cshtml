@@ -1,0 +1,72 @@
+﻿@{
+    Layout = null;
+}
+
+@Scripts.Render("~/content/manager/js")
+
+<script type="text/javascript">
+    $(function () {
+        //修改密码
+        $('.js-password').on('click', function () {
+            amy.modal('@Url.Action("Password", "Manager", new { area="Admin" })', {}, function (formData, res) {
+                if (!res.Flag) {
+                    amy.alert(res.Content[0][1]);
+                }
+                else {
+                    amy.alert(res.Content, function () {
+                        location.href = '/';
+                    });
+                }
+            })
+        })
+
+        //用户退出
+        $('.js-exit').on('click', function () {
+            $.post('@Url.Action("LoginOut", "Account", new { area=string.Empty })', {}, function (res) {
+                if (res.Flag) {
+                    location.href = '/';
+                }
+            }, 'json');
+        })
+
+        //功能未开放
+        $('.js-unopened').on('click', function () {
+            amy.alert('功能未开放，请联系开发人员！');
+        })
+
+        //菜单状态
+        var amy_menu = $.cookie('amy-menu');
+
+        if (!amy_menu) {
+            $('.amy-menu-default').addClass('active');
+        }
+        else {
+            $('.amy-menu-default').removeClass('active');
+        }
+
+        $('#side-menu .amy-menu').on('click', function () {
+
+            $.cookie('amy-menu', $(this).attr('data-cookie'), { path: '/' });
+
+        }).each(function (n) {
+
+            if (amy_menu.indexOf($(this).attr('data-cookie')) > -1) {
+                $(this).addClass('active');
+
+                var ul = $(this).parents('ul');
+                if (ul) {
+                    ul.addClass('in')
+                }
+
+                var li = $(this).parents('li');
+                if (li) {
+                    li.addClass('active')
+                }
+            }
+
+        })
+
+
+    })
+</script>
+

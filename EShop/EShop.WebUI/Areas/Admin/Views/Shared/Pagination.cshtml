@@ -1,0 +1,96 @@
+﻿@model IPagination
+@{
+    Layout = null;
+}
+
+@{
+    RouteValueDictionary oldRouteValueDict = null;
+    var parentRouteValues = this.ViewContext.RouteData.Values["parentRouteValues"];
+    if (parentRouteValues != null)
+    {
+        oldRouteValueDict = parentRouteValues as RouteValueDictionary;
+    }
+    else
+    {
+        oldRouteValueDict = Url.RouteValues().AppendOrReplace("parentRouteValues", null);
+    }
+    var firstLink = Url.RouteUrl(oldRouteValueDict.AppendOrReplace("page", 1));
+    var prevPageLink = Url.RouteUrl(oldRouteValueDict.AppendOrReplace("page", Model.CurrentPage - 1));
+    var nextPageLink = Url.RouteUrl(oldRouteValueDict.AppendOrReplace("page", Model.CurrentPage + 1));
+    var endLink = Url.RouteUrl(oldRouteValueDict.AppendOrReplace("page", Model.PageCount));
+    
+    
+}
+@{
+    System.Text.StringBuilder sb = new System.Text.StringBuilder();
+
+    sb.AppendFormat("<div class=\"col-lg-6\"><div class=\"pagination-panel\" style=\"padding-top: 7px;\">当前{0}页，总共{1}页，总共{2}条数据</div></div>", Model.CurrentPage, Model.PageCount, Model.DataCount);
+    
+    sb.AppendFormat("<div class=\"col-lg-6 text-right\"><div class=\"pagination-panel\"><ul class=\"pagination pagination-sm man\">");
+    if (Model.CurrentPage == 1)
+    {
+        sb.Append("<li class=\"disabled\"><a>首页</a></li>");
+        sb.Append("<li class=\"disabled\"><a>上一页</a></li>");
+    }
+    else
+    {
+        sb.AppendFormat("<li><a href=\"{0}\">首页</a></li>", firstLink);
+        sb.AppendFormat("<li><a href=\"{0}\">上一页</a></li>", prevPageLink);
+    }
+   
+    @PageList()
+    for (int i = ViewBag.Start; i <= ViewBag.End; i++)
+    {
+        var currentLink = Url.RouteUrl(oldRouteValueDict.AppendOrReplace("page", i));
+        if (Model.CurrentPage == i)
+        {
+            sb.AppendFormat("<li class=\"active\"><a href=\"{0}\">" + i + "</a></li>", currentLink);
+        }
+        else
+        {
+            sb.AppendFormat("<li><a href=\"{0}\">" + i + "</a></li>", currentLink);
+        }
+    }
+
+    if (Model.CurrentPage == Model.PageCount)
+    {
+        sb.Append("<li class=\"disabled\"><a>下一页</a></li>");
+        sb.Append("<li class=\"disabled\"><a>尾页</a></li>");
+    }
+    else
+    {
+        sb.AppendFormat("<li><a href=\"{0}\">下一页</a></li>", nextPageLink);
+        sb.AppendFormat("<li><a href=\"{0}\">尾页</a></li>", endLink);
+    }
+
+    //sb.AppendFormat("<li>第{0}页</span><span>共 {1} 页</li>", Model.CurrentPage, Model.PageCount);
+    sb.AppendFormat("</ul></div></div>");
+        
+}
+@Html.Raw(sb)
+
+
+@helper PageList()
+{
+    int start = 1, end = 10;///
+    if (Model.PageCount < end)//页数小于10
+    {
+        end = Model.PageCount;
+    }
+    else
+    {
+        start = (Model.CurrentPage > 5) ? Model.CurrentPage - 5 : start;
+        int result = (start + 9) - Model.PageCount;//是否超过最后面的页数
+        if (result > 0)
+        {
+            end = Model.PageCount;
+            start -= result;//超过后,补差
+        }
+        else
+        {
+            end = start + 9;
+        }
+    }
+    ViewBag.Start = start;
+    ViewBag.End = end;
+}

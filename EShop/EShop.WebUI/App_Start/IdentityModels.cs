@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 
 namespace EShop.WebUI
 {
@@ -30,6 +31,16 @@ namespace EShop.WebUI
     // 可以通过向 ApplicationRole 类添加更多属性来为角色添加配置文件数据
     public class ApplicationRole : IdentityRole
     {
+        /// <summary>
+        /// 角色描述
+        /// </summary>
+        public string Description { get; set; }
+
+        /// <summary>
+        /// 创建时间
+        /// </summary>
+        public DateTime CreateTime { get; set; }
+
         public ApplicationRole()
         {
             this.Id = System.Guid.NewGuid().ToString("N");

@@ -1,0 +1,89 @@
+﻿@model EShop.WebUI.ApplicationRole
+@{
+    Layout = null;
+}
+
+<div class="modal-content">
+    <div class="modal-header">
+        <button class="close" aria-hidden="true" data-dismiss="modal" type="button">×</button>
+        <h4 class="modal-title" id="modal-login-label">@ViewBag.Title</h4>
+    </div>
+    <div class="modal-body">
+        <div class="form">
+            <form id="amy-form" method="post" action="@Url.Action("Save", "Role",new { area="Admin" })" class="form-horizontal">
+                <div class="form-body pal">
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">角色名称</label>
+                        <div class="col-md-10">
+                            <input name="Id" type="hidden" value="@Model.Id" />
+                            <input type="text" name="Name" value="@Model.Name" class="form-control required" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">角色描述</label>
+                        <div class="col-md-10">
+                            <textarea name="Description" class="form-control">@Model.Description</textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-actions pal">
+                    <div class="form-group mbn">
+                        <div class="col-md-offset-2 col-md-6">
+                            <button type="submit" class="btn btn-primary sure">确定</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    //初始化表单checkbox
+    $('input[type="checkbox"]:not(".switch")').iCheck({
+        checkboxClass: 'icheckbox_minimal-grey',
+        increaseArea: '20%' // optional
+    }).each(function (n) {
+        var obj = $(this);
+
+        var array = '';
+
+        if (obj.attr('data-value')) {
+            array = ',' + obj.attr('data-value') + ',';
+        }
+
+        var cur = ',' + obj.val() + ',';
+
+        if (array.indexOf(cur) >= 0) {
+            obj.iCheck('check');
+        }
+    });
+
+    //初始化表单radio
+    $('#amy-form input[type="radio"]:not(".switch")').iCheck({
+        radioClass: 'iradio_minimal-grey',
+        increaseArea: '20%' // optional
+    }).each(function (n) {
+        var obj = $(this);
+
+        if (obj.val() == obj.attr('data-value')) {
+            obj.iCheck('check');
+        }
+    });
+
+    $('.js-select2').select2();
+
+    $('.js-select2').each(function (n) {
+        var obj = $(this);
+
+        var id = obj.attr('data-value');
+
+        if (id) {
+            obj.select2('val', id);
+        }
+        else {
+            obj.select2('val', '');
+        }
+    })
+</script>
+

@@ -1,0 +1,178 @@
+﻿@model PageList<EShop.WebUI.ApplicationRole>
+@{
+    ViewBag.Title = "角色列表";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<!-- 面包屑 start -->
+<div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
+    <ol class="breadcrumb page-breadcrumb pull-left">
+        <li><i class="fa fa-home"></i>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/admin/manager">工作台</a>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+        <li><a href="javascript:void(0);">系统管理</a>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+        <li class="active">@ViewBag.Title</li>
+    </ol>
+    <div class="clearfix"></div>
+</div>
+<!-- 面包屑 end -->
+<!-- 右侧内容 start -->
+<div class="page-content">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-yellow">
+                <div class="panel-body">
+                    <div class="box jplist">
+                        <div class="jplist-panel box panel-top">
+                            <div style="float: left;">
+                                <div class="text-filter-box">
+                                    <a href="javascript:void(0);" class="btn btn-green js-add"><i class="fa fa-plus"></i>&nbsp;添加角色</a>
+                                    <a href="javascript:void(0);" class="btn btn-primary js-bulkDel"><i class="fa fa-minus"></i>&nbsp;删除角色</a>
+                                </div>
+                            </div>
+                            <div style="float: right;">
+                                <form method="get" action="/admin/role">
+                                    <div class="text-filter-box">
+                                        <div class="input-group">
+                                            <input type="text" name="key" value="@ViewBag.Key" class="form-control" placeholder="关键字">
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-blue" type="submit">搜索</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-yellow">
+                <div class="panel-heading">@ViewBag.Title</div>
+                <div class="panel-body">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th width="3%">
+                                    <input type="checkbox" class="checkall" />
+                                </th>
+                                <th>角色名称</th>
+                                <th>会员人数</th>
+                                <th>角色描述</th>
+                                <th>创建时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var v in Model)
+                            {
+                                <tr data-id="@v.Id">
+
+                                    <td>
+                                        <input type="checkbox" />
+                                    </td>
+                                    <td>@v.Name</td>
+                                    <td>@v.Users.Count</td>
+                                    <td>@v.Description</td>
+                                    <td>@v.CreateTime.ToFormatDay()</td>
+                                    <td>
+                                        <a href="javascript:void(0);" class="btn btn-green btn-outlined btn-square js-edit">编辑</a>
+                                        <a href="javascript:void(0);" class="btn btn-red btn-outlined btn-square js-del">删除</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <div class="row">
+                        @Html.Pager(Model)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 右侧内容 end -->
+
+@section styles{
+    <link type="text/css" rel="stylesheet" href="/content/mgr/vendors/jplist/html/css/jplist-custom.css">
+}
+
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            $('.js-add').on('click', function () {
+                amy.modal('@Url.Action("Add", "Role", new { area="Admin" })', {}, function (data, res) {
+                    if (res.Flag) {
+                        amy.alert('新建角色成功！！！', function () {
+                            location.reload();
+                        })
+                    }
+                    else {
+                        amy.alert(res.Content[0][1]);
+                    }
+                })
+            })
+
+            $('.js-edit').on('click', function () {
+                var id = $(this).parents('tr').attr('data-id');
+
+                amy.modal('@Url.Action("Edit", "Role", new { area="Admin" })', { id: id }, function (data, res) {
+                    if (res.Flag) {
+                        amy.alert('编辑角色成功！！！', function () {
+                            location.reload();
+                        })
+                    }
+                    else {
+                        amy.alert(res.Content[0][1]);
+                    }
+                })
+            })
+
+            $('.js-del').on('click', function () {
+                var id = $(this).parents('tr').attr('data-id');
+
+                amy.confirm('确定要删除所选角色吗？', function () {
+                    $.post('@Url.Action("Delete", "Role", new { area="Admin" })', { ids: id }, function (res) {
+                        if (res.Flag) {
+                            amy.alert('删除角色成功！！！', function () {
+                                location.reload();
+                            })
+                        }
+                        else {
+                            amy.alert(res.Content[0][1]);
+                        }
+
+                    }, 'json')
+                })
+            })
+
+            $('.js-bulkDel').on('click', function () {
+                var obj = $(this);
+
+                amy.confirm('确定要删除所选角色吗？', function () {
+                    var ids = [];
+
+                    $(".icheckbox_minimal-grey").each(function () {
+                        if ($(this).hasClass("checked")) {
+
+                            var id = $(this).parents('tr').attr('data-id');
+
+                            if (id) {
+                                ids.push(id);
+                            }
+                        }
+                    });
+
+                    $.post('@Url.Action("Delete", "Role", new { area="Admin" })', { ids: ids.join(',') }, function (res) {
+                        if (res.Flag) {
+                            amy.alert('删除角色成功！！！', function () {
+                                location.reload();
+                            })
+                        }
+                        else {
+                            amy.alert(res.Content[0][1]);
+                        }
+
+                    }, 'json')
+                })
+            })
+        })
+    </script>
+}
+

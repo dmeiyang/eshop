@@ -41,5 +41,7 @@ create table aspnetroles
 (
 	Id char(32) primary key,
 	Name varchar(50) not null comment '角色名称',
-	Discriminator varchar(50) null comment '区分IdentityRole和自定义Role'
+	Discriminator varchar(50) null comment '区分IdentityRole和自定义Role',
+	Description varchar(100) null comment '描述',
+	CreateTime datetime not null comment '创建时间'
 ) comment '用户角色表';

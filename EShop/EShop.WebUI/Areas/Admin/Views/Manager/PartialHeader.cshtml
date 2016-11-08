@@ -1,0 +1,55 @@
+﻿@{
+    Layout = null;
+}
+<!-- 广告条 start -->
+<div class="news-ticker bg-orange">
+    <div class="container">
+        <ul id="news-ticker-content" class="list-unstyled mbn">
+            <li><a href='javascript:void(0);' target='_blank'>人生若只如初见</a></li>
+        </ul>
+        <a id="news-ticker-close" href="javascript:void(0);"><i class="fa fa-times"></i></a>
+    </div>
+</div>
+<!-- 广告条 end -->
+<!-- 返回顶部 start -->
+<a id="totop" href="javascript:void(0);"><i class="fa fa-angle-up"></i></a>
+<!-- 返回顶部 end -->
+<!-- 头部导航 start -->
+<div id="header-topbar-option-demo" class="page-header-topbar">
+    <nav id="topbar" role="navigation" style="margin-bottom: 0; z-index: 2;" class="navbar navbar-default navbar-static-top">
+        <!-- Logo start -->
+        <div class="navbar-header">
+            <button type="button" data-toggle="collapse" data-target=".sidebar-collapse" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+            </button>
+            <a id="logo" href="/admin/manager" class="navbar-brand"><span class="fa fa-rocket"></span><span class="logo-text">后台管理系统</span><span style="display: none" class="logo-text-icon">µ</span></a>
+        </div>
+        <!-- Logo end -->
+        <!-- 横向菜单 start -->
+        <div class="topbar-main">
+            <a id="menu-toggle" href="javascript:void(0);" class="hidden-xs"><i class="fa fa-bars"></i></a>
+
+            <form id="topbar-search" action="/admin/search" method="GET" class="hidden-xs">
+                <div class="input-group">
+                    <input type="text" placeholder="Search..." class="form-control" /><span class="input-group-btn"><a href="javascript:;" class="btn submit"><i class="fa fa-search"></i></a></span>
+                </div>
+            </form>
+
+            <ul class="nav navbar navbar-top-links navbar-right mbn">
+                <li class="dropdown topbar-user">
+                    <a data-hover="dropdown" href="javascript:void(0);" class="dropdown-toggle">
+                        <img src="~/content/mgr/images/gallery/data/head_default.jpg" class="img-responsive img-circle" />&nbsp;<span class="hidden-xs">@User.Identity.Name</span>&nbsp;<span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user pull-right">
+                        <li><a href="/admin/manager/basicinfo"><i class="fa fa-user"></i>基本信息</a></li>
+                        <li class="divider"></li>
+                        <li><a href="javascript:void(0);"><i class="fa fa-lock"></i>锁屏离开</a></li>
+                        <li><a href="javascript:void(0);" class="js-exit"><i class="fa fa-key"></i>退出系统</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- 横向菜单 end -->
+    </nav>
+</div>
+<!-- 头部导航 end -->
