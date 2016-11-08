@@ -1,6 +1,6 @@
-﻿@model PageList<EShop.WebUI.ApplicationRole>
+﻿@model PageList<EShop.WebUI.ApplicationUser>
 @{
-    ViewBag.Title = "角色列表";
+    ViewBag.Title = "用户列表";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
@@ -8,7 +8,7 @@
 <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
     <ol class="breadcrumb page-breadcrumb pull-left">
         <li><i class="fa fa-home"></i>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/admin/manager">工作台</a>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
-        <li><a href="javascript:void(0);">系统管理</a>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+        <li><a href="javascript:void(0);">用户管理</a>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
         <li class="active">@ViewBag.Title</li>
     </ol>
     <div class="clearfix"></div>
@@ -25,12 +25,12 @@
                         <div class="jplist-panel box panel-top">
                             <div style="float: left;">
                                 <div class="text-filter-box">
-                                    <a href="javascript:void(0);" class="btn btn-green js-add"><i class="fa fa-plus"></i>&nbsp;添加角色</a>
-                                    <a href="javascript:void(0);" class="btn btn-primary js-bulkDel"><i class="fa fa-minus"></i>&nbsp;删除角色</a>
+                                    <a href="javascript:void(0);" class="btn btn-green js-add"><i class="fa fa-plus"></i>&nbsp;添加用户</a>
+                                    <a href="javascript:void(0);" class="btn btn-primary js-bulkDel"><i class="fa fa-minus"></i>&nbsp;删除用户</a>
                                 </div>
                             </div>
                             <div style="float: right;">
-                                <form method="get" action="/admin/role">
+                                <form method="get" action="/admin/Member">
                                     <div class="text-filter-box">
                                         <div class="input-group">
                                             <input type="text" name="key" value="@ViewBag.Key" class="form-control" placeholder="关键字">
@@ -53,10 +53,11 @@
                                 <th width="3%">
                                     <input type="checkbox" class="checkall" />
                                 </th>
-                                <th>角色名称</th>
-                                <th>会员人数</th>
-                                <th>角色描述</th>
-                                <th>创建时间</th>
+                                <th>用户名</th>
+                                <th>邮箱</th>
+                                <th>手机号</th>
+                                <th>所在城市</th>
+                                <th>更新时间</th>
                                 <th>操作</th>
                             </tr>
                         </thead>
@@ -68,10 +69,11 @@
                                     <td>
                                         <input type="checkbox" />
                                     </td>
-                                    <td>@v.Name</td>
-                                    <td>@v.Users.Count</td>
-                                    <td>@v.Description</td>
-                                    <td>@v.CreateTime.ToFormatDay()</td>
+                                    <td>@v.UserName</td>
+                                    <td>@v.Email</td>
+                                    <td>@(string.IsNullOrEmpty(v.PhoneNumber)?"-----------": v.PhoneNumber)</td>
+                                    <td>@v.City</td>
+                                    <td>@v.UpdateTime.ToFormatDay()</td>
                                     <td>
                                         <a href="javascript:void(0);" class="btn btn-green btn-outlined btn-square js-edit">编辑</a>
                                         <a href="javascript:void(0);" class="btn btn-red btn-outlined btn-square js-del">删除</a>
@@ -98,9 +100,9 @@
     <script type="text/javascript">
         $(function () {
             $('.js-add').on('click', function () {
-                amy.modal('@Url.Action("Add", "Role", new { area="Admin" })', {}, function (data, res) {
+                amy.modal('@Url.Action("Add", "Member", new { area="Admin" })', {}, function (data, res) {
                     if (res.Flag) {
-                        amy.alert('新建角色成功！！！', function () {
+                        amy.alert('新建用户成功！！！', function () {
                             location.reload();
                         })
                     }
@@ -113,9 +115,9 @@
             $('.js-edit').on('click', function () {
                 var id = $(this).parents('tr').attr('data-id');
 
-                amy.modal('@Url.Action("Edit", "Role", new { area="Admin" })', { id: id }, function (data, res) {
+                amy.modal('@Url.Action("Edit", "Member", new { area="Admin" })', { id: id }, function (data, res) {
                     if (res.Flag) {
-                        amy.alert('编辑角色成功！！！', function () {
+                        amy.alert('编辑用户成功！！！', function () {
                             location.reload();
                         })
                     }
@@ -128,10 +130,10 @@
             $('.js-del').on('click', function () {
                 var id = $(this).parents('tr').attr('data-id');
 
-                amy.confirm('确定要删除所选角色吗？', function () {
-                    $.post('@Url.Action("Delete", "Role", new { area="Admin" })', { ids: id }, function (res) {
+                amy.confirm('确定要删除所选用户吗？', function () {
+                    $.post('@Url.Action("Delete", "Member", new { area="Admin" })', { ids: id }, function (res) {
                         if (res.Flag) {
-                            amy.alert('删除角色成功！！！', function () {
+                            amy.alert('删除用户成功！！！', function () {
                                 location.reload();
                             })
                         }
@@ -146,7 +148,7 @@
             $('.js-bulkDel').on('click', function () {
                 var obj = $(this);
 
-                amy.confirm('确定要删除所选角色吗？', function () {
+                amy.confirm('确定要删除所选用户吗？', function () {
                     var ids = [];
 
                     $(".icheckbox_minimal-grey").each(function () {
@@ -160,9 +162,9 @@
                         }
                     });
 
-                    $.post('@Url.Action("Delete", "Role", new { area="Admin" })', { ids: ids.join(',') }, function (res) {
+                    $.post('@Url.Action("Delete", "Member", new { area="Admin" })', { ids: ids.join(',') }, function (res) {
                         if (res.Flag) {
-                            amy.alert('删除角色成功！！！', function () {
+                            amy.alert('删除用户成功！！！', function () {
                                 location.reload();
                             })
                         }

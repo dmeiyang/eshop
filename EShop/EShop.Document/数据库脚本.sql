@@ -13,7 +13,9 @@ create table aspnetusers
 	AccessFailedCount int not null comment '登陆失败次数',
 	UserName varchar(50) not null comment '用户名称',
 	City varchar(50) null comment '所在城市',
-	Age int default 0 not null comment '今年几何'
+	Type int default 0 not null comment '账户类型。0，用户；1，管理员',
+	UpdateTime datetime not null comment '更新时间',
+	CreateTime datetime not null comment '创建时间'
 ) comment '用户表';
 
 create table aspnetuserclaims

@@ -50,13 +50,13 @@ namespace EShop.WebUI.Controllers
         [HttpPost]
         public async Task<ActionResult> Register(Models.RegisterViewModel model)
         {
-            var user = new ApplicationUser { Id=IDHelper.Id32, UserName = model.UserName, Email = model.Email, City = model.City, Age = model.Age };
+            var user = new ApplicationUser { Id = IDHelper.Id32, UserName = model.UserName, Email = model.Email, Type = 1, City = model.City, UpdateTime = DateTime.Now, CreateTime = DateTime.Now };
 
             var result = await UserManager.CreateAsync(user, model.Password);
 
             if (result.Succeeded)
             {
-                UserManager.AddToRole(user.Id, "普通会员");
+                UserManager.AddToRole(user.Id, "管理员");
 
                 return Json(new { Flag = true, Content = "注册成功！！！" }, JsonRequestBehavior.AllowGet);
             }

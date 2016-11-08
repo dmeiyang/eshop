@@ -10,9 +10,22 @@ namespace EShop.WebUI
     // 可以通过向 ApplicationUser 类添加更多属性来为用户添加配置文件数据
     public class ApplicationUser : IdentityUser
     {
-        public virtual string City { get; set; }
+        public int Type { get; set; }
 
-        public virtual int Age { get; set; }
+        /// <summary>
+        /// 所在城市
+        /// </summary>
+        public string City { get; set; }
+
+        /// <summary>
+        /// 更新时间
+        /// </summary>
+        public DateTime UpdateTime { get; set; }
+
+        /// <summary>
+        /// 创建时间
+        /// </summary>
+        public DateTime CreateTime { get; set; }
 
         public ApplicationUser()
         {

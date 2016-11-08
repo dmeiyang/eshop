@@ -16,7 +16,8 @@ namespace EShop.WebUI
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                namespaces: new string[] { "EShop.WebUI.Controllers" }//解决Controllers与Areas中控制器不能同名问题
             );
         }
     }
