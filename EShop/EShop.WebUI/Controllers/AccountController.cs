@@ -31,7 +31,7 @@ namespace EShop.WebUI.Controllers
             var user = await UserManager.FindAsync(account, password);
 
             if (user == null)
-                return Json(new { Flag = false, Content = "用户名或密码错误！！！" });
+                return Json(new { Flag = false, Content = "用户名或密码错误！！！" }, JsonRequestBehavior.AllowGet);
 
             // 2. 利用ASP.NET Identity获取identity 对象
             var identity = await UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
@@ -39,7 +39,15 @@ namespace EShop.WebUI.Controllers
             // 3. 将上面拿到的identity对象登录
             AuthenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = true }, identity);
 
-            return Json(new { Flag = true, Content = "登录成功！！！" });
+            if (user.Type == 1)
+            {
+                return Json(new { Flag = true, Content = "/admin/manager" }, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(new { Flag = true, Content = "/" }, JsonRequestBehavior.AllowGet);
+            }
+            
         }
 
         public ActionResult Register()
@@ -58,12 +66,20 @@ namespace EShop.WebUI.Controllers
             {
                 UserManager.AddToRole(user.Id, "管理员");
 
-                return Json(new { Flag = true, Content = "注册成功！！！" }, JsonRequestBehavior.AllowGet);
+                return Json(new { Flag = true, Content = "注册成功，请立即登录！！！" }, JsonRequestBehavior.AllowGet);
             }
             else
             {
                 return Json(new { Flag = false, Content = "注册失败！！！" }, JsonRequestBehavior.AllowGet);
             }
+        }
+
+        [HttpPost]
+        public ActionResult Logout()
+        {
+            AuthenticationManager.SignOut();
+
+            return Json(new { Flag = true, Content = "用户成功登出系统！！！" }, JsonRequestBehavior.AllowGet);
         }
     }
 }

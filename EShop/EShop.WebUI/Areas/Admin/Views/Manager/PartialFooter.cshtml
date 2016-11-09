@@ -22,9 +22,9 @@
 
         //用户退出
         $('.js-exit').on('click', function () {
-            $.post('@Url.Action("LoginOut", "Account", new { area=string.Empty })', {}, function (res) {
+            $.post('@Url.Action("LogOut", "Account", new { area=string.Empty })', {}, function (res) {
                 if (res.Flag) {
-                    location.href = '/';
+                    location.href = '/account/login';
                 }
             }, 'json');
         })

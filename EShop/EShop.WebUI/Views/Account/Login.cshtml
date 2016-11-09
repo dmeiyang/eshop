@@ -74,11 +74,32 @@
 
     <script src="/content/mgr/js/jquery-1.10.2.min.js"></script>
     <script src="/content/mgr/vendors/iCheck/icheck.min.js"></script>
+    <script src="/content/mgr/vendors/jquery-validate/jquery.validate.min.js"></script>
+    <script src="/content/mgr/vendors/jquery-validate/message_cn.js"></script>
+    <script src="/content/mgr/vendors/jquery-validate/jquery.form.js"></script>
+    <script src="/content/mgr/vendors/jquery-validate/jquery-me.validate.js"></script>
 
     <script type="text/javascript">
         $('input[type="checkbox"]').iCheck({
             checkboxClass: 'icheckbox_minimal-grey',
             increaseArea: '20%' // optional
+        });
+
+        $('#amy-form').myValidate(function (form) {
+            $(form).ajaxSubmit({
+                success: function (res) {
+                    if (res.Flag) {
+                        location.href = res.Content;
+                    }
+                    else {
+                        amy.alert(res.Content[0][1]);
+                    }
+                },
+                error: function () {
+
+                },
+                dataType: "json"
+            })
         });
     </script>
 </body>
