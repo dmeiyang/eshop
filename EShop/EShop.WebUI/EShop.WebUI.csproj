@@ -193,6 +193,7 @@
     <Compile Include="Areas\Admin\Controllers\BasicController.cs" />
     <Compile Include="Areas\Admin\Controllers\ManagerController.cs" />
     <Compile Include="Areas\Admin\Controllers\MemberController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PropertyController.cs" />
     <Compile Include="Areas\Admin\Controllers\RoleController.cs" />
     <Compile Include="Areas\Admin\Models\MemberViewModel.cs" />
     <Compile Include="Areas\Admin\Models\SystemViewModel.cs" />
@@ -883,6 +884,7 @@
     <Content Include="Areas\Admin\Views\Role\Add.cshtml" />
     <Content Include="Areas\Admin\Views\Member\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Member\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Property\Index.cshtml" />
     <None Include="Project_Readme.html" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
@@ -892,6 +894,10 @@
     <ProjectReference Include="..\EShop.Data\EShop.Data.csproj">
       <Project>{67aafbbc-c942-43f3-a2f4-5ea715e19aec}</Project>
       <Name>EShop.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EShop.Service\EShop.Service.csproj">
+      <Project>{c23e3bd4-cda4-4072-91c5-0840551895d7}</Project>
+      <Name>EShop.Service</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

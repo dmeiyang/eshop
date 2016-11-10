@@ -12,5 +12,7 @@ namespace EShop.Data
         public DataContext() : base("DefaultConnection") { }
 
         public DbSet<DomainModels.Member> Members { get; set; }
+
+        public DbSet<DomainModels.Property> Propertys { get; set; }
     }
 }

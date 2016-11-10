@@ -47,3 +47,37 @@ create table aspnetroles
 	Description varchar(100) null comment '描述',
 	CreateTime datetime not null comment '创建时间'
 ) comment '用户角色表';
+
+create table product
+(
+	
+) comment '商品表';
+
+create table category
+(
+
+) comment '分类表';
+
+create table brand
+(
+
+) comment '品牌表';
+
+create table property
+(
+	Id char(32) primary key,
+	DisplayName varchar(50) not null comment '显示名称，比如颜色、尺寸等',
+	Name varchar(50) not null comment 'input中name属性值',
+	Type int default 0 not null comment '属性类型（1、input；2、checkbox；3、radio；4、select；）',
+	Content varchar(500) not null comment '属性内容，根据类型不同存储不同的值'
+) comment '属性表';
+
+create table standard
+(
+	Id char(32) primary key,
+	DisplayName varchar(50) not null comment '显示名称，比如颜色、尺寸等',
+	Name varchar(50) not null comment 'input中name属性值',
+	Content varchar(100) not null comment '规格值，比如：红色,粉色等'
+) comment '规格表';
+
+
